@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Polygon Wrapped Matic Data</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- Rest of your HTML content -->
+</body>
+</html>
+
+<body>
+    <h1>Polygon Wrapped Matic</h1>
+    <div id="data-container">
+    </div>
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('/fetch-data');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                const container = document.getElementById('data-container');
+
+                // Display Approvals
+                let html = '<h2>Approvals</h2>';
+                data.approvals.forEach(approval => {
+                    html += `<h3>ID: ${approval.id}</h3>`;
+                    html += `<ul>`;
+                    html += `<li>Source: ${approval.src}</li>`;
+                    html += `<li>Approved: ${approval.guy}</li>`;
+                    html += `<li>Amount: ${approval.wad}</li>`;
+                    html += `</ul>`;
+                });
+
+                // Display Transfers
+                html += '<h2>Transfers</h2>';
+                data.transfers.forEach(transfer => {
+                    html += `<h3>ID: ${transfer.id}</h3>`;
+                    html += `<ul>`;
+                    html += `<li>Source: ${transfer.src}</li>`;
+                    html += `<li>Destination: ${transfer.dst}</li>`;
+                    html += `<li>Amount: ${transfer.wad}</li>`;
+                    html += `</ul>`;
+                });
+
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('data-container').innerHTML = '<p>Error loading data</p>';
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
