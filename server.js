@@ -5,7 +5,6 @@ const path = require('path');
 const port = 3000;
 const graphqlQuery = require('./graphql_code.js');
 
-// Import fetch dynamically
 import('node-fetch').then(fetchModule => {
   const fetch = fetchModule.default;
 
