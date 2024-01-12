@@ -6,6 +6,8 @@ The relevant code is in server.js and public/displayData.html.
 
 ![data view](wmatic_data.png)
 
+Similar code, for an earlier version of this app which used Nader Dabit's ENS subgraph as its data source, is [here](https://github.com/julianeon/ensgraph).
+
 # How to Run
 
 Note: you'll need an API key from the Graph. You'll also need to change the part of the code where I specify the API key in server.js.
